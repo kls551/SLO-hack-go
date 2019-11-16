@@ -2,11 +2,13 @@
   <div>
     <b-card no-body>
       <b-tabs card>
-        <b-tab title="Level 1" active>
-
+        <b-tab
+          v-for="lvl in levels"
+          :key="lvl.level"
+          :title="JSON.stringify(lvl.level)" active @click="getParkings(lvl.level)">
+          
           <b-container class='my-5'>
             <b-row class="parking-row">
-              <!-- <b-col v-for="(item, index) in items">1 of 2</b-col> -->
               <b-col class="available">1 of 2</b-col>
               <b-col class="not-available">2 of 2</b-col>
               <b-col class="available">1 of 2</b-col>
@@ -29,7 +31,7 @@
             </b-row>
           </b-container>
         </b-tab>
-        <b-tab title="Level 2">
+        <b-tab title="Level 2" @click="getParkings(2)">
           <b-card-text>Tab contents 2</b-card-text>
         </b-tab>
       </b-tabs>
@@ -42,19 +44,25 @@
 <script>
 import services from '../services';
 export default {
-  name: 'HelloWorld',
+  name: 'parkings',
   data (){
     return ({
-      users: []
+      parkings: [],
+      levels: []
     });
   },
   mounted() {
-    this.getUsers();
+    this.getLevels();
   },
   methods: {
-    async getUsers () {
-      let user = await services.fetchUser();
-      this.users = user.data;
+    async getLevels() {
+      let level = await services.getLevel();
+      this.levels = level.data;
+      // alert(JSON.stringify(this.levels))
+    },
+    async getParkings (lvl) {
+      let user = await services.getParkingByLevel({level: lvl});
+      this.parkings = user.data;
     }
   },
   props: {

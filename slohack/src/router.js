@@ -2,7 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import users from "@/components/users";
-import HelloWorld from "@/components/HelloWorld";
+import parkings from "@/components/parkings";
 
 
 Vue.use(Router);
@@ -13,7 +13,7 @@ export const router = new Router({
     {
       path: "/",
       name: "home",
-      component: HelloWorld
+      component: parkings
     },
     {
       path: "/users",
