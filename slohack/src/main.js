@@ -8,7 +8,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { router } from './router'
 
 Vue.config.productionTip = false
-
+require('./assets/my_style.css');
 Vue.use(BootstrapVue)
 new Vue(
   {
