@@ -33,15 +33,23 @@
           <b-card-text>Tab contents 2</b-card-text>
         </b-tab>
       </b-tabs>
-    </b-card>
-  </div>
-
-  
+    </b-card>  
+    </div>
 </template>
 
 <script>
+import services from '../services';
 export default {
   name: 'HelloWorld',
+  mounted() {
+    this.getUsers();
+  },
+  methods: {
+    async getUsers () {
+      let user = await services.fetchUser();
+      alert(JSON.stringify(user.data));
+    }
+  },
   props: {
     msg: String
   }
