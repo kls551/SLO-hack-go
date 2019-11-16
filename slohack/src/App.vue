@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-navbar type="dark" variant="info">
+      <b-navbar-brand href="#">DP. Go</b-navbar-brand>
+
+      <b-button class="button" variant="info" v-bind:to="{ name: 'users' }">Users</b-button>
+
+      <b-button class="button" variant="info" v-bind:to="{ name: 'home' }">Home</b-button>
+
+    </b-navbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  name: 'app'
 }
 </script>
 
@@ -23,6 +25,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.button {
+  margin: 10px;
 }
 </style>

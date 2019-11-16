@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <div>{{ JSON.stringify(users) }} </div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br/>
@@ -34,13 +35,18 @@
 import services from '../services';
 export default {
   name: 'HelloWorld',
+  data (){
+    return ({
+      users: []
+    });
+  },
   mounted() {
     this.getUsers();
   },
   methods: {
     async getUsers () {
       let user = await services.fetchUser();
-      alert(JSON.stringify(user.data));
+      this.users = user.data;
     }
   },
   props: {

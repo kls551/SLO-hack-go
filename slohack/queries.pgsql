@@ -11,3 +11,5 @@ CREATE TABLE parkings {
     userid integer REFERENCES users(id),
     taken boolean
 }
+
+ALTER TABLE users ADD column expires timestamp DEFAULT (NOW() + interval '1 hour');
