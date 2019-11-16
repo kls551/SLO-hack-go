@@ -2,12 +2,14 @@
     background-color: greenyellow;
     height: 200px;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .not-available {
     background-color: red;
     height: 200px;
     margin-right: 20px;
+    border-radius: 10px;
 }
 
 .parking-row {

@@ -41,6 +41,7 @@
 import services from '../services';
 export default {
   name: 'HelloWorld',
+  users: [],
   mounted() {
     this.getUsers();
   },
@@ -48,6 +49,7 @@ export default {
     async getUsers () {
       let user = await services.fetchUser();
       alert(JSON.stringify(user.data));
+      this.users = user;
     }
   },
   props: {
