@@ -2,7 +2,7 @@
   <div>
     <b-modal id="bv-modal-example" hide-footer>
       <template v-slot:modal-title>
-        Buy {{ form.space }} parking space 
+        Buy parking space {{ form.space }} 
       </template>
       <div class="d-block">
         <b-form @submit="onSubmit">
@@ -82,6 +82,7 @@
           <div class="cb greenn"/>
           <div>Available</div>
           </div>
+          <div style="float: left">Hourly Rate: $2</div>
         </b-card>
 
         <b-tab
@@ -156,15 +157,22 @@ export default {
       this.DateString = this.form.expires.toString();
     },
     async onSubmit() {
-      await services.postUser(this.form);
+      let res = await services.postUser(this.form);
       this.getParkings(this.curTab)
+      if (res.status === 200) {
+        this.$bvToast.toast(`Parking Ticket Bought`, {
+          title: 'Success!',
+          autoHideDelay: 5000
+        })
+      }
     },
     onReset() {
+      let prevSpace = this.form.space;
       this.form = {
         name: '',
         creditCard: '',
-        space: '',
         licensePlate: '',
+        space: prevSpace,
         expires: new Date().addHours(1),
         totalHour: 1,
         totalPrice: 0
