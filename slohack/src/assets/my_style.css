@@ -2,14 +2,42 @@
     background-color: greenyellow;
     height: 200px;
     margin-right: 20px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 8%;
+    opacity: 70%;
 }
 
 .not-available {
     background-color: red;
     height: 200px;
     margin-right: 20px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 8%;
+    opacity: 70%;
 }
 
 .parking-row {
-    margin-top: 15%;
+    margin-top: 5%;
+}
+
+
+.parking-row-bot{
+    margin-top: 160px;
+}
+
+.cb {
+    float: left;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(0, 0, 0, .2);
+  }
+  
+.redd {
+background: red;
+}
+
+.greenn {
+background: greenyellow;
 }
