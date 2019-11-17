@@ -12,7 +12,4 @@ CREATE TABLE parkings (
     taken boolean
 );
 
-insert into parkings (id, level, taken)
-VALUES ('A1', 1, FALSE);
-insert into parkings (id, level, taken)
-VALUES ('B1', 2, FALSE);
+ALTER TABLE users ADD column expires timestamp DEFAULT (NOW() + interval '1 hour');

@@ -36,3 +36,21 @@ app.get('/users', async (request, response) => {
     response.status(200).json(results.rows)
   })
 });
+
+app.get('/parkings/:level', async (req, response) => {
+  pool.query(`SELECT * FROM parkings where level=${req.params.level}`, (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+});
+
+app.get('/lvl', async (req, response) => {
+  pool.query(`SELECT DISTINCT level FROM parkings order by level`, (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+});

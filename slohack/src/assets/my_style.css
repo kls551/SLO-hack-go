@@ -3,6 +3,7 @@
     height: 200px;
     margin-right: 20px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .not-available {
@@ -10,8 +11,23 @@
     height: 200px;
     margin-right: 20px;
     border-radius: 10px;
+    text-align: center;
 }
 
-.parking-row {
-    margin-top: 15%;
+.parking-row-top {
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
+
+.parking-row-bottom {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.parking-id {
+    text-align: center;
+    padding-top: 9%;
+    padding-bottom: 10%;
+    font-size: 24px;
+}
+
