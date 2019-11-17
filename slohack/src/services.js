@@ -11,5 +11,9 @@ export default {
 
     getLevel() {
         return api().get(`/lvl`)
+    },
+
+    postUser(params) {
+        return api().post('/user', params)
     }
 };

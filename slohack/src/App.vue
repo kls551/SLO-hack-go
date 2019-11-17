@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <b-navbar type="dark" variant="info">
-      <b-navbar-brand href="#">DP. Go</b-navbar-brand>
+      <b-navbar-brand href=""><img 
+        class="logo"
+      src="@/assets/logo.png"/></b-navbar-brand>
 
       <b-button class="button" variant="info" v-bind:to="{ name: 'users' }">Users</b-button>
 
@@ -28,5 +30,9 @@ export default {
 }
 .button {
   margin: 10px;
+}
+.logo {
+  width: 120px;
+  height: 80px;
 }
 </style>

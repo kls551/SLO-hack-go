@@ -6,10 +6,15 @@ CREATE TABLE users (
 );
 
 CREATE TABLE parkings (
-    id text PRIMARY KEY,
+    id int PRIMARY KEY,
     level integer,
     userid integer REFERENCES users(id),
     taken boolean
 );
 
-ALTER TABLE users ADD column expires timestamp DEFAULT (NOW() + interval '1 hour');
+ALTER TABLE users DROP column expires;
+ALTER TABLE users ADD column price int DEFAULT 0;
+ALTER TABLE users ADD column totalHour int DEFAULT 1;
+
+
+ALTER TABLE users ADD column expires timestamptz DEFAULT (NOW() + interval '1 hour');
