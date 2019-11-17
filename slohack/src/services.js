@@ -9,6 +9,10 @@ export default {
         return api().get(`/parkings/${params.level}`)
     },
 
+    getInfo(params) {
+        return api().get(`/user/${params.plate}`)
+    },
+
     getLevel() {
         return api().get(`/lvl`)
     },

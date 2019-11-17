@@ -5,7 +5,7 @@
         class="logo"
       src="@/assets/logo.png"/></b-navbar-brand>
 
-      <b-button class="button" variant="info" v-bind:to="{ name: 'users' }">Users</b-button>
+      <b-button class="button" variant="info" v-bind:to="{ name: 'users' }">Check Status</b-button>
 
       <b-button class="button" variant="info" v-bind:to="{ name: 'home' }">Home</b-button>
 

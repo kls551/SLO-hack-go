@@ -156,9 +156,8 @@ export default {
       this.DateString = this.form.expires.toString();
     },
     async onSubmit() {
-      let res = await services.postUser(this.form);
+      await services.postUser(this.form);
       this.getParkings(this.curTab)
-      alert(res.data)
     },
     onReset() {
       this.form = {

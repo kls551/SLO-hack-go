@@ -37,6 +37,15 @@ app.get('/users', async (request, response) => {
   })
 });
 
+app.get('/user/:plate', async (request, response) => {
+  pool.query('SELECT * FROM users where license_plate=$1 LIMIT 1', [request.params.plate.toUpperCase()],(error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+});
+
 app.get('/parkings/:level', async (req, response) => {
   let result = await pool.query(`select p.*, u.expires from parkings p left JOIN users u on u.id = p.userid WHERE p.taken = TRUE
     and u.expires < NOW()`);
@@ -72,12 +81,12 @@ app.post('/user', async (req, res) => {
   let body = req.body;
   pool.query(`INSERT INTO users (name, license_plate, credit_card, expires, price, totalhour)
     VALUES ($1, $2, $3, $4, $5, $6) RETURNING *
-  `, [body.name, body.licensePlate, body.creditCard, body.expires, body.totalPrice, body.totalHour],
+  `, [body.name.toLowerCase(), body.licensePlate.toUpperCase(), body.creditCard, body.expires, body.totalPrice, body.totalHour],
     (err, result) => {
       if (err) {
         throw err;
       }
-      pool.query(`UPDATE parkings SET taken=TRUE WHERE id=$1`, [body.space], (err, r) => {
+      pool.query(`UPDATE parkings SET taken=TRUE, userid=$2 WHERE id=$1`, [body.space, result.rows[0].id], (err, r) => {
         if (err) {
           throw err;
         }
